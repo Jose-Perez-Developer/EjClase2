@@ -3,23 +3,21 @@ import './App.css';
 
 
 function App() {
-  const [unidad, setUnidad] = useState(0);
-  const [decena, setDecena] = useState(0);
-  const [centena, setCentena] = useState(0);
-  const [umil, setUmil] = useState(0);
-  const [dmil, setDmil] = useState(0);
-  const [cmil, setCmil] = useState(0);
+  const [dolar, setDolar] = useState(0);
+  const [euro, setEuro] = useState(0);
+  const [peso, setPeso] = useState(0);
+  const [colon, setColon] = useState(0);
+  const [bitcoint, setBitcoint] = useState(0);
 
   const [tipo, setTipo] = useState(1);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    setUnidad((total * tipo) / 1);
-    setDecena((total * tipo) / 10);
-    setCentena((total * tipo) / 100);
-    setUmil((total * tipo) / 1000);
-    setDmil((total * tipo) / 10000);
-    setCmil((total * tipo) / 100000);
+    setDolar((total * tipo) * 1);
+    setEuro((total * tipo) * 0.85);
+    setPeso((total * tipo)*20.07);
+    setColon((total * tipo)*8.75);
+    setBitcoint((total * tipo)*0.000022);
   }, [total, tipo]);
 
 
@@ -32,26 +30,24 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Convertidor de unidades</h1>
+      <h1>Cambio de divisas</h1>
 
-      <p>Unidad: {unidad}</p>
-      <p>Decena: {decena}</p>
-      <p>Centena: {centena}</p>
-      <p>Unidad Mil: {umil}</p>
-      <p>Decena Mil: {dmil}</p>
-      <p>Centena Mil: {cmil}</p>
-
+      <p>Dolar: {dolar}</p>
+      <p>Euro: {euro}</p>
+      <p>Peso mexicano: {peso}</p>
+      <p>Colones salvadorennos: {colon}</p>
+      <p>Bitcoint: {bitcoint}</p>
       <hr />
 
       <h3>{total}</h3>
 
       <select onChange={event => setTipo(event.target.value)} value={tipo}>
-        <option value={1}>Unidad</option>
-        <option value={10}>Decena</option>
-        <option value={100}>Centena</option>
-        <option value={1000}>Unidad Mil</option>
-        <option value={10000}>Decena Mil</option>
-        <option value={100000}>Centena Mil</option>
+        <option value={1}>Dolar</option>
+        <option value={1.17}>Euro</option>
+        <option value={0.050}>Peso mexicano</option>
+        <option value={0.11}>Colones salvadorennos</option>
+        <option value={45463.20}>Bitcoint</option>
+
       </select>
       <input onChange={handleTotalChange} value={total} />
     </div>
